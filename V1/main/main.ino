@@ -118,9 +118,9 @@ void loop()
   processMain();  
 }
 
-BLYNK_WRITE(V0) {timeV1 = param.asInt();Serial.println(timeV1);}
-BLYNK_WRITE(V1) {timeV2 = param.asInt();Serial.println(timeV2);}
-BLYNK_WRITE(V2) {timeV3 = param.asInt();Serial.println(timeV3);}
+BLYNK_WRITE(V0) {timeV1 = param.asInt(); Serial.println(timeV1);}
+BLYNK_WRITE(V1) {timeV2 = param.asInt(); Serial.println(timeV2);}
+BLYNK_WRITE(V2) {timeV3 = param.asInt(); Serial.println(timeV3);}
 BLYNK_WRITE(V3) {buttonStartBlynk = param.asInt();}
 BLYNK_WRITE(V4) {buttonClearBlynk = param.asInt();}
 
