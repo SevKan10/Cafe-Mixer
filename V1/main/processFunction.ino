@@ -12,8 +12,6 @@ void processMain()
     display.println("Decive Is Running");
     display.display();
 
-    buttonStartBlynk = 0; 
-
     Blynk.syncVirtual(V0);
     Blynk.syncVirtual(V1);
     Blynk.syncVirtual(V2);
@@ -128,13 +126,18 @@ void processMain()
         display.println("Taking tea: OK");
         display.display();
 
-        flagBlynk = 0;
+        flagBlynk = 3;
 
         ringBell(150, 3);
 
         Serial.println("Process taked tea");
       break;
+
+      case 3:
+        flagBlynk = 0;
+      break;
     }
+    buttonStartBlynk = 0; 
     Blynk.virtualWrite(V3, 0);
     // lastCurrentButton = digitalRead(buttonStart);
   }
@@ -152,7 +155,7 @@ void resetProcess()
   {
     Serial.println("Reset device");
 
-    flagBlynk = 0;
+    flagBlynk = 3;
     buttonClearBlynk = 0;
 
     display.clearDisplay();
