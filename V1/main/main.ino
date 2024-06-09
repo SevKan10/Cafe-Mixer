@@ -47,13 +47,11 @@ int timeV1 = 0;
 int timeV2 = 0;
 int timeV3 = 0;
 int currentState = 0;
-int flagBlynk = 0;
+int flagBlynk = 3;
 
 bool buttonStartBlynk = 0;
 bool buttonClearBlynk = 0;
-bool hasRun = 0;
 bool lastCurrentButton = 1;
-unsigned long timer1;
 /*=========VAR=========*/
 
 void ringBell(int delayTimes, int repeatTimes);
@@ -97,7 +95,7 @@ void setup()
 
   display.setTextSize(1);
   display.setCursor(0, 10);
-  display.println("Decive Is Ready");
+  display.println("Decive Is OK");
   display.display();
 
   Serial.println("Device is ready");
@@ -116,6 +114,9 @@ void loop()
   display.display();
   resetProcess();
   processMain();  
+
+  if (buttonStartBlynk == 0 || digitalRead(volume1) == 0 || digitalRead(volume2) == 0 || digitalRead(volume3) == 0) {Blynk.virtualWrite(V3, 0);}
+  else {Blynk.virtualWrite(V3, 0);}
 }
 
 BLYNK_WRITE(V0) {timeV1 = param.asInt(); Serial.println(timeV1);}
